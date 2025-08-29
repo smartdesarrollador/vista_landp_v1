@@ -1,0 +1,357 @@
+/* Estilos para el grid del portafolio */
+
+/* Animaciones personalizadas para proyectos */
+@keyframes projectCardHover {
+  from {
+    transform: translateY(0) scale(1);
+  }
+  to {
+    transform: translateY(-8px) scale(1.02);
+  }
+}
+
+@keyframes filterButtonActive {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.05);
+  }
+}
+
+/* Estilos para las tarjetas de proyectos */
+.project-card {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 16px;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+}
+
+/* Proyectos destacados */
+.featured-project {
+  position: relative;
+}
+
+.featured-project::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(135deg, #f59e0b, #f97316, #f59e0b);
+  border-radius: 18px;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.featured-project:hover::before {
+  opacity: 0.5;
+}
+
+/* Efectos de imagen con parallax */
+.project-card img {
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project-card:hover img {
+  transform: scale(1.1);
+}
+
+/* Efectos de overlay */
+.project-card .absolute.inset-0 {
+  backdrop-filter: blur(1px);
+}
+
+/* Animaciones para tecnologías */
+.project-card span[class*="bg-"] {
+  transition: all 0.2s ease;
+  cursor: default;
+}
+
+.project-card span[class*="bg-"]:hover {
+  transform: scale(1.05);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Efectos de botones de filtro */
+.project-card button {
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.project-card button:hover::before {
+  left: 100%;
+}
+
+/* Animaciones de entrada escalonada */
+.project-card:nth-child(1) { animation-delay: 0s; }
+.project-card:nth-child(2) { animation-delay: 0.1s; }
+.project-card:nth-child(3) { animation-delay: 0.2s; }
+.project-card:nth-child(4) { animation-delay: 0.3s; }
+.project-card:nth-child(5) { animation-delay: 0.4s; }
+.project-card:nth-child(6) { animation-delay: 0.5s; }
+
+/* Efectos especiales para badges */
+.project-card .rounded-full {
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card .bg-gradient-to-r::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transform: rotate(45deg);
+  animation: shine 2s ease-in-out infinite;
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-50%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(0%) translateY(0%) rotate(45deg);
+  }
+}
+
+/* Efectos de estadísticas en overlay */
+.project-card .grid div {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+}
+
+.project-card:hover .grid div {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.project-card .grid div:nth-child(1) { transition-delay: 0.1s; }
+.project-card .grid div:nth-child(2) { transition-delay: 0.2s; }
+.project-card .grid div:nth-child(3) { transition-delay: 0.3s; }
+
+/* Efectos de filtros de categoría */
+.category-filter {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.category-filter::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(79, 70, 229, 0.1), rgba(147, 51, 234, 0.1));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: inherit;
+}
+
+.category-filter:hover::before {
+  opacity: 1;
+}
+
+/* Animaciones para el contador de proyectos */
+@keyframes countUp {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.category-filter span:last-child {
+  animation: countUp 0.3s ease-out;
+}
+
+/* Efectos de línea truncada */
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Efectos de aparición para iconos */
+.project-card .w-10 {
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.project-card:hover .w-10 {
+  transform: scale(1.1) rotate(5deg);
+}
+
+/* Efectos de enlace "Ver Proyecto" */
+.group\/btn svg {
+  transition: transform 0.2s ease;
+}
+
+.group\/btn:hover svg {
+  transform: translateX(4px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .project-card {
+    margin-bottom: 2rem;
+  }
+  
+  .project-card img {
+    height: 200px;
+  }
+  
+  .project-card .grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .project-card .flex-wrap {
+    justify-content: center;
+  }
+  
+  .category-filter {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+  }
+}
+
+/* Efectos de accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+  .project-card,
+  .project-card *,
+  .category-filter,
+  .featured-project::before {
+    animation: none !important;
+    transition: none !important;
+  }
+  
+  .project-card:hover {
+    transform: none;
+  }
+}
+
+/* Estados de enfoque */
+.project-card:focus-within,
+.category-filter:focus {
+  outline: none;
+  ring: 4px;
+  ring-color: rgba(79, 70, 229, 0.3);
+  border-radius: 16px;
+}
+
+/* Efectos de carga lazy */
+.project-card img {
+  transition: opacity 0.3s ease, transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  min-height: 256px;
+  background-color: #f3f4f6;
+  background-image: linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+.project-card img.lazy-loading {
+  opacity: 0.7;
+  animation: loading 1.5s infinite;
+}
+
+.project-card img.lazy-loaded {
+  opacity: 1;
+  animation: none;
+  background: none;
+}
+
+.project-card img.lazy-error {
+  opacity: 1;
+  animation: none;
+  background-color: #f9fafb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Mejoras para el estado vacío */
+.empty-state svg {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Efectos especiales para call-to-action */
+.project-card .bg-gradient-to-r.rounded-2xl {
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card .bg-gradient-to-r.rounded-2xl::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+  animation: ripple 4s ease-in-out infinite;
+}
+
+@keyframes ripple {
+  0%, 100% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}

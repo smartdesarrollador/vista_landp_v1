@@ -1,0 +1,142 @@
+<!-- Grid de servicios con diseño responsive -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+  <div
+    *ngFor="let service of services; let i = index"
+    class="service-card relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 p-8 group border border-gray-100"
+    [attr.data-aos]="'fade-up'"
+    [attr.data-aos-delay]="i * 100"
+  >
+    <!-- Badge "Más Popular" -->
+    <div 
+      *ngIf="service.isPopular"
+      class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-4 py-1 rounded-full text-sm font-medium shadow-lg"
+    >
+      Más Popular
+    </div>
+
+    <!-- Icono del servicio -->
+    <div class="flex justify-center mb-6">
+      <div class="relative">
+        <!-- Círculo de fondo con gradiente -->
+        <div class="w-20 h-20 bg-gradient-to-br from-indigo-100 to-purple-100 rounded-full flex items-center justify-center group-hover:from-indigo-200 group-hover:to-purple-200 transition-all duration-300">
+          <!-- Icono SVG -->
+          <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            class="h-10 w-10 text-indigo-600 group-hover:text-purple-600 transition-colors duration-300" 
+            fill="none" 
+            viewBox="0 0 24 24" 
+            stroke="currentColor"
+          >
+            <path 
+              stroke-linecap="round" 
+              stroke-linejoin="round" 
+              stroke-width="2" 
+              [attr.d]="getServiceIcon(service.icon)" 
+            />
+          </svg>
+        </div>
+        
+        <!-- Efecto de brillo -->
+        <div class="absolute inset-0 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+      </div>
+    </div>
+
+    <!-- Nombre del servicio -->
+    <h3 class="text-2xl font-bold text-gray-900 text-center mb-4 group-hover:text-indigo-600 transition-colors duration-300">
+      {{ service.name }}
+    </h3>
+
+    <!-- Descripción -->
+    <p class="text-gray-600 text-center mb-6 leading-relaxed">
+      {{ service.description }}
+    </p>
+
+    <!-- Lista de características -->
+    <ul class="space-y-3 mb-8">
+      <li 
+        *ngFor="let feature of service.features"
+        class="flex items-center text-sm text-gray-700"
+      >
+        <!-- Icono de check -->
+        <svg 
+          xmlns="http://www.w3.org/2000/svg" 
+          class="h-5 w-5 text-green-500 mr-3 flex-shrink-0" 
+          fill="none" 
+          viewBox="0 0 24 24" 
+          stroke="currentColor"
+        >
+          <path 
+            stroke-linecap="round" 
+            stroke-linejoin="round" 
+            stroke-width="2" 
+            d="M5 13l4 4L19 7" 
+          />
+        </svg>
+        <span>{{ feature }}</span>
+      </li>
+    </ul>
+
+    <!-- Precio -->
+    <div class="text-center mb-6">
+      <span class="text-3xl font-bold text-gray-900">{{ service.price }}</span>
+    </div>
+
+    <!-- Botón de acción -->
+    <div class="text-center">
+      <button
+        (click)="scrollToContact()"
+        class="w-full py-3 px-6 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+        [ngClass]="{
+          'from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600': service.isPopular
+        }"
+      >
+        Solicitar Cotización
+        
+        <!-- Icono de flecha -->
+        <svg 
+          xmlns="http://www.w3.org/2000/svg" 
+          class="h-5 w-5 ml-2 inline-block transition-transform duration-300 group-hover:translate-x-1" 
+          fill="none" 
+          viewBox="0 0 24 24" 
+          stroke="currentColor"
+        >
+          <path 
+            stroke-linecap="round" 
+            stroke-linejoin="round" 
+            stroke-width="2" 
+            d="M13 7l5 5m0 0l-5 5m5-5H6" 
+          />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Efecto de hover en el borde -->
+    <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-indigo-600 to-purple-600 opacity-0 group-hover:opacity-10 transition-opacity duration-300 pointer-events-none"></div>
+  </div>
+</div>
+
+<!-- Sección adicional con CTA general -->
+<div class="mt-16 text-center" data-aos="fade-up" data-aos-delay="800">
+  <div class="bg-gradient-to-r from-indigo-900 to-purple-900 rounded-2xl p-8 text-white">
+    <h3 class="text-2xl md:text-3xl font-bold mb-4">
+      ¿No encuentras lo que buscas?
+    </h3>
+    <p class="text-lg text-indigo-100 mb-6 max-w-2xl mx-auto">
+      Ofrecemos soluciones personalizadas adaptadas a las necesidades específicas de tu negocio. 
+      Contáctanos para una consulta gratuita.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <button
+        (click)="scrollToContact()"
+        class="px-8 py-3 bg-white text-indigo-900 font-semibold rounded-xl hover:bg-gray-100 transition-all duration-300 transform hover:scale-105"
+      >
+        Consulta Personalizada
+      </button>
+      <button
+        class="px-8 py-3 border-2 border-white text-white font-semibold rounded-xl hover:bg-white hover:text-indigo-900 transition-all duration-300"
+      >
+        Ver Portfolio
+      </button>
+    </div>
+  </div>
+</div>

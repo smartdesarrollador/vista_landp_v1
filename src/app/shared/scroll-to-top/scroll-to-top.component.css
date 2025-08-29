@@ -1,0 +1,71 @@
+/* Animación de entrada para el botón */
+@keyframes bounce-in {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-5px) scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-bounce-in {
+  animation: bounce-in 0.5s ease-out;
+}
+
+/* Efecto de pulso sutil */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4);
+  }
+  50% {
+    box-shadow: 0 4px 20px rgba(79, 70, 229, 0.6);
+  }
+}
+
+button {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Hover effects mejorados */
+button:hover {
+  animation: none; /* Detener el pulso al hacer hover */
+}
+
+/* Efecto de rotación al hacer clic */
+button:active {
+  transform: scale(0.95) rotate(360deg);
+  transition: transform 0.2s ease;
+}
+
+/* Accesibilidad - reducir animaciones si el usuario lo prefiere */
+@media (prefers-reduced-motion: reduce) {
+  .animate-bounce-in,
+  button {
+    animation: none !important;
+  }
+  
+  button:active {
+    transform: scale(0.95);
+  }
+}
+
+/* Responsivo - ajustar posición en móviles */
+@media (max-width: 768px) {
+  button {
+    bottom: 1rem;
+    right: 1rem;
+    width: 3rem;
+    height: 3rem;
+  }
+  
+  button svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+}

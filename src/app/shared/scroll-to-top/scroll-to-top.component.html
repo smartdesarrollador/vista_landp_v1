@@ -1,0 +1,26 @@
+<!-- Botón flotante para scroll hacia arriba -->
+<button
+  *ngIf="isVisible"
+  (click)="scrollToTop()"
+  class="fixed bottom-8 right-8 z-50 w-12 h-12 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110 focus:outline-none focus:ring-4 focus:ring-indigo-300 animate-bounce-in"
+  aria-label="Volver arriba"
+>
+  <!-- Icono de flecha hacia arriba -->
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    class="h-6 w-6 mx-auto"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      d="M5 10l7-7m0 0l7 7m-7-7v18"
+    />
+  </svg>
+
+  <!-- Efecto de pulso al hover -->
+  <div class="absolute inset-0 rounded-full bg-white opacity-0 hover:opacity-20 transition-opacity duration-300"></div>
+</button>
